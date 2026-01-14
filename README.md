@@ -1,5 +1,9 @@
 # Laravel Exports
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/osama-98/laravel-exports.svg?style=flat-square)](https://packagist.org/packages/osama-98/laravel-exports)
+[![Total Downloads](https://img.shields.io/packagist/dt/osama-98/laravel-exports.svg)](https://packagist.org/packages/osama-98/laravel-exports)
+[![License](https://img.shields.io/packagist/l/osama-98/laravel-exports.svg?style=flat-square)](https://packagist.org/packages/osama-98/laravel-exports)
+
 A powerful Laravel package for exporting large datasets in batches and chunks with support for CSV and XLSX formats. This package provides a clean, fluent API for handling exports efficiently.
 
 ## Features
