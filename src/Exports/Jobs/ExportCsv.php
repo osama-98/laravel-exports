@@ -35,7 +35,6 @@ class ExportCsv implements ShouldQueue
     public ?int $maxExceptions = 5;
 
     /**
-     * @param  array<mixed>  $records
      * @param  array<string, string>  $columnMap
      * @param  array<string, mixed>  $options
      */

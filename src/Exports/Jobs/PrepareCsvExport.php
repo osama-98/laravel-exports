@@ -34,7 +34,6 @@ class PrepareCsvExport implements ShouldQueue
     /**
      * @param  array<string, string>  $columnMap
      * @param  array<string, mixed>  $options
-     * @param  array<mixed> | null  $records
      */
     public function __construct(
         protected Export $export,

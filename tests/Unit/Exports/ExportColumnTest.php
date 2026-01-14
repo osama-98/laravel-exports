@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
 use Osama\LaravelExports\Exports\ExportColumn;
 use Osama\LaravelExports\Exports\Exporter;
 use Osama\LaravelExports\Exports\Models\Export;
@@ -59,7 +60,9 @@ describe('ExportColumn', function () {
         $column = ExportColumn::make('name')
             ->getStateUsing(fn ($record) => strtoupper($record->name));
 
-        $record = (object) ['name' => 'john'];
+        $record = new class extends Model {
+            protected $attributes = ['name' => 'john'];
+        };
         $column->exporter($this->exporter);
         $this->exporter->shouldReceive('getRecord')->andReturn($record);
 
@@ -70,8 +73,11 @@ describe('ExportColumn', function () {
         $column = ExportColumn::make('description')
             ->limit(10);
 
+        $record = new class extends Model {
+            protected $attributes = ['description' => 'This is a very long description'];
+        };
         $column->exporter($this->exporter);
-        $this->exporter->shouldReceive('getRecord')->andReturn((object) ['description' => 'This is a very long description']);
+        $this->exporter->shouldReceive('getRecord')->andReturn($record);
 
         $formatted = $column->getFormattedState();
 
@@ -83,8 +89,11 @@ describe('ExportColumn', function () {
         $column = ExportColumn::make('tags')
             ->separator(',');
 
+        $record = new class extends Model {
+            protected $attributes = ['tags' => 'tag1,tag2,tag3'];
+        };
         $column->exporter($this->exporter);
-        $this->exporter->shouldReceive('getRecord')->andReturn((object) ['tags' => 'tag1,tag2,tag3']);
+        $this->exporter->shouldReceive('getRecord')->andReturn($record);
 
         expect($column->getState())->toBe(['tag1', 'tag2', 'tag3']);
     });
@@ -94,8 +103,11 @@ describe('ExportColumn', function () {
             ->prefix('$')
             ->suffix('.00');
 
+        $record = new class extends Model {
+            protected $attributes = ['price' => '100'];
+        };
         $column->exporter($this->exporter);
-        $this->exporter->shouldReceive('getRecord')->andReturn(['price' => '100']);
+        $this->exporter->shouldReceive('getRecord')->andReturn($record);
 
         expect($column->getFormattedState())->toBe('$100.00');
     });

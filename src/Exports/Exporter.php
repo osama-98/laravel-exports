@@ -36,9 +36,6 @@ abstract class Exporter
         protected array $options,
     ) {}
 
-    /**
-     * @return array<mixed>
-     */
     public function __invoke(Model $record): array
     {
         $this->record = $record;
@@ -134,7 +131,7 @@ abstract class Exporter
         }, []);
     }
 
-    public function getRecord(): mixed
+    public function getRecord(): ?Model
     {
         return $this->record;
     }
@@ -193,17 +190,11 @@ abstract class Exporter
         return null;
     }
 
-    /**
-     * @param  array<mixed>  $values
-     */
     public function makeXlsxHeaderRow(array $values, ?Style $style = null): Row
     {
         return $this->makeXlsxRow($values, $style);
     }
 
-    /**
-     * @param  array<mixed>  $values
-     */
     public function makeXlsxRow(array $values, ?Style $style = null): Row
     {
         if ($style !== null) {
