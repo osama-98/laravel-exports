@@ -60,7 +60,8 @@ describe('ExportColumn', function () {
         $column = ExportColumn::make('name')
             ->getStateUsing(fn ($record) => strtoupper($record->name));
 
-        $record = new class extends Model {
+        $record = new class extends Model
+        {
             protected $attributes = ['name' => 'john'];
         };
         $column->exporter($this->exporter);
@@ -73,7 +74,8 @@ describe('ExportColumn', function () {
         $column = ExportColumn::make('description')
             ->limit(10);
 
-        $record = new class extends Model {
+        $record = new class extends Model
+        {
             protected $attributes = ['description' => 'This is a very long description'];
         };
         $column->exporter($this->exporter);
@@ -89,7 +91,8 @@ describe('ExportColumn', function () {
         $column = ExportColumn::make('tags')
             ->separator(',');
 
-        $record = new class extends Model {
+        $record = new class extends Model
+        {
             protected $attributes = ['tags' => 'tag1,tag2,tag3'];
         };
         $column->exporter($this->exporter);
@@ -103,7 +106,8 @@ describe('ExportColumn', function () {
             ->prefix('$')
             ->suffix('.00');
 
-        $record = new class extends Model {
+        $record = new class extends Model
+        {
             protected $attributes = ['price' => '100'];
         };
         $column->exporter($this->exporter);
