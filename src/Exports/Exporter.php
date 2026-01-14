@@ -206,7 +206,11 @@ abstract class Exporter
      */
     public function makeXlsxRow(array $values, ?Style $style = null): Row
     {
-        return Row::fromValues($values, $style);
+        if ($style !== null) {
+            return Row::fromValuesWithStyle($values, $style);
+        }
+
+        return Row::fromValues($values);
     }
 
     public function configureXlsxWriterBeforeClose(Writer $writer): Writer
