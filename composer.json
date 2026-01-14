@@ -1,0 +1,79 @@
+{
+    "name": "osama-98/laravel-exports",
+    "description": "A Laravel package for exporting data in batches and chunks with support for CSV and XLSX formats",
+    "type": "library",
+    "keywords": [
+        "osama-98",
+        "laravel",
+        "export",
+        "laravel-export",
+        "laravel-export-batches",
+        "laravel-batch",
+        "csv",
+        "xlsx",
+        "excel",
+        "sheet",
+        "batch",
+        "chunk"
+    ],
+    "homepage": "https://github.com/osama-98/laravel-exports",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Osama Sadah",
+            "email": "osama.sada98@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "anourvalar/eloquent-serialize": "^1.2",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/queue": "^10.0|^11.0|^12.0",
+        "illuminate/filesystem": "^10.0|^11.0|^12.0",
+        "league/csv": "^9.27",
+        "openspout/openspout": "^4.23"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.27",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Osama\\LaravelExports\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Osama\\LaravelExports\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Osama\\LaravelExports\\LaravelExportsServiceProvider"
+            ]
+        }
+    }
+}
